@@ -1,0 +1,48 @@
+﻿<ion-view view-title="Everything Bill" ng-form name="everyThingBillForm">
+    <ion-content scroll="true">
+        <div ng-controller="EverythingBillCtrl">
+            <div class="button-bar">
+                <button class="button button-balanced" ng-click="addCostButtonClick();">
+                  Add A Cost
+                </button>
+                <button class="button button-royal" ng-click="addBuyerButtonClick();">
+                    Add A Buyer
+                </button>
+               
+            </div>
+
+
+            <ion-list>
+                <div ng-show="costArray.length>0" class="item item-divider">Cost (Item:{{$scope.everythingbill.totalCostItems}} Amount:{{$scope.everythingbill.totalCostAmount}})</div>
+                <div ng-show="costArray.length<=0" class="item item-divider"> Please add expense items.</div>
+                <ion-item ng-show="costArray.length>0" class="item item-icon-left" ng-repeat="cost in costArray" href="#/tab/addcost/{{cost.id}}">
+                    <i class="icon ion-cash"></i>
+                    <h2>
+                        {{cost.name}}
+                    </h2>
+                    <p>Amount:{{cost.amount}}</p>
+                    <span class="badge badge-assertive">0</span>
+                </ion-item>
+            </ion-list>
+
+            <ion-list>
+                <div ng-show="buyerArray.length>0" class="item item-divider">Buyer ({{$scope.everythingbill.totalBuyers}} people)</div>
+                <div ng-show="buyerArray.length<=0" class="item item-divider">Please add a buyer.</div>
+                <ion-item  ng-show="buyerArray.length>0" class="item item-icon-left" ng-repeat="buyer in buyerArray"  href="#/tab/addbuyer/{{buyer.id}}">
+                    <i class="icon ion-person"></i>
+                    <h2>
+                        {{buyer.name}}
+                    </h2>
+                    <p>
+                        Amount Paid:{{buyer.amount}}
+                    </p>
+                    <p>
+                       Amount Owned:{{buyer.amount}}
+                    </p>
+                   
+                    <span class="badge badge-assertive">0</span>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,71 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{currentCost.name}}" ng-controller="AddCostCtrl">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-stable" ng-click="cancelCostChange()">
+            Cancel
+        </button>
+        <button class="button button-assertive" ng-click="deleteCostConfirm()">
+            Delete
+        </button>
+
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button  button-stable" ng-click="saveCostChange()">
+            Save
+        </button>
+    </ion-nav-buttons>
+  <ion-content>
+    
+      <ion-list>
+          <label class="item item-input">
+
+              <span class="input-label"><i><img ng-src="img/total-bill.png" style="display: inline-block;vertical-align: middle;"></i> Cost  </span>
+              <input type="text" name="costName"  do-select-on-click ng-model="currentCost.name">
+
+          </label>
+
+          <label class="item item-input">
+
+              <span class="input-label"><i><img ng-src="img/total-bill.png" style="display: inline-block;vertical-align: middle;"></i> Amount  </span>
+              <input type="text" name="costAmount" do-decimal-number do-select-on-click ng-model="currentCost.amount">
+
+          </label>
+
+          <label class="item item-input ">
+
+              <span class="input-label"><i><img ng-src="img/tip-percent.png" style="display: inline-block;vertical-align: middle;"></i> Tip/Tax  </span>
+
+              <input type="text" do-decimal-number do-select-on-click  ng-model="currentCost.tipTax">
+          </label>
+          </ion-list>
+      <ion-list>
+          <div  ng-show="buyerArray.length>0" class="item item-divider">Paid By :
+              <select>
+                  <option ng-repeat="buyer in buyerArray">
+                        {{buyer.name}}
+                  </option>
+              </select>
+          </div>
+
+          <div class="item item-divider">Shared By :</div>
+          <ion-item class="item-icon-left" ng-repeat="buyer in buyerArray">
+              <i class="icon ion-person"></i>
+              <ion-checkbox ng-model="buyer.buyerHasThisCost" ng-change="checkBuyerHasThisCost($index)">
+                
+                  <h2>
+                      {{buyer.name}}
+                      {{buyer.amount}}
+                  </h2>
+                  <span class="badge badge-assertive">0</span>
+              </ion-checkbox>
+             
+            </ion-item>
+      </ion-list>
+</ion-content>
+</ion-view>

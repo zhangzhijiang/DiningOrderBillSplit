@@ -1,0 +1,2 @@
+MainPackage=E:\Dev\MobileDevelopment\DiningOrder\DiningOrder\platforms\windows\build\phone\debug\anycpu\CordovaApp.Phone_1.0.0.0_anycpu_debug.appx
+ResourcePack=E:\Dev\MobileDevelopment\DiningOrder\DiningOrder\platforms\windows\build\phone\debug\anycpu\CordovaApp.Phone_1.0.0.0_scale-100.appx

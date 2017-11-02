@@ -1,0 +1,58 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{currentBuyer.name}}" ng-controller="AddBuyerCtrl">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-stable" ng-click="cancelBuyerChange()">
+            Cancel
+        </button>
+        <button class="button button-assertive" ng-click="deleteBuyerConfirm()">
+            Delete
+        </button>
+
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button  button-stable" ng-click="saveBuyerChange()">
+            Save
+        </button>
+    </ion-nav-buttons>
+  <ion-content>
+    
+      <ion-list>
+          <label class="item item-input">
+
+              <span class="input-label"><i><img ng-src="img/total-bill.png" style="display: inline-block;vertical-align: middle;"></i> Buyer Name  </span>
+              <input type="text" name="buyerName"  do-select-on-click ng-model="currentBuyer.name">
+
+          </label>
+
+          <label class="item item-input">
+
+              <span class="input-label"><i><img ng-src="img/total-bill.png" style="display: inline-block;vertical-align: middle;"></i> Buyer Email  </span>
+              <input type="text" name="buyerEmail" do-decimal-number do-select-on-click ng-model="currentBuy.email">
+
+          </label>
+
+          </ion-list>
+      <ion-list>
+        
+
+          <div class="item item-divider">Has follwoing Costs :</div>
+          <ion-item class="item item-icon-left" ng-repeat="cost in costArray">
+              <i class="icon ion-person"></i>
+              <ion-checkbox ng-model="cost.costHasThisBuyer" ng-change="checkCostHasThisBuyer($index)">
+                
+                  <h2>
+                      {{cost.name}}
+                      {{cost.amount}}
+                  </h2>
+                  <span class="badge badge-assertive">0</span>
+              </ion-checkbox>
+          </ion-item>
+      </ion-list>
+</ion-content>
+</ion-view>

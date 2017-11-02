@@ -1,0 +1,38 @@
+<ion-view view-title="Orders" ng-form name="ordersForm">
+    <ion-content scroll="true">
+        <div ng-controller="OrdersCtrl">
+            <div class="list card">
+                <div class="item item-divider">Please Input Your Order</div>
+                <div class="item item-body">
+                    <div>
+                        <label class="item item-input">
+
+                            <span class="input-label"><i><img style="display: inline-block;vertical-align: middle;" ng-src="img/item-hotdog.png"></i>   Order Item </span>
+                            <input type="text" name="orderItem" do-select-on-click ng-model="orderItemName">
+
+                        </label>
+                        <label class="item item-input">
+                            <span class="input-label"><i><img style="display: inline-block;vertical-align: middle;" ng-src="img/item-price.png"></i>   Item Price </span>
+                            <input type="number" name="itemPrice" do-select-on-click ng-model="orderItemPrice">
+
+                        </label>
+                        <button class="button button-block button-positive">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <ion-list>
+                <ion-item class="item item-remove-animate  item-avatar item-icon-right" ng-repeat="order in orders" type="item-text-wrap">
+                    <img ng-src="{{order.picture}}">
+                    <h2>{{order.name}}</h2>
+                    <p>{{order.description}}</p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <ion-option-button class="button-assertive" ng-click="remove(order)">
+                        Delete
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

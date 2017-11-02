@@ -1,0 +1,74 @@
+<ion-view view-title="Bill" ng-form name="billForm">
+    <ion-nav-title> Dining Order - Bill Split</ion-nav-title>
+    <ion-nav-buttons  side="secondary">
+        <button class="button button-outline button-stable" ng-click="showConfirm()">
+            Reset Bill
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div ng-controller="BillCtrl">
+            <ion-list>
+
+                <label class="item item-input">
+
+                    <span class="input-label"><i><img ng-src="img/total-bill.png" style="display: inline-block;vertical-align: middle;"></i> Bill Amount  </span>
+                    <input type="text" name="totalbill" do-decimal-number do-select-on-click ng-change="totalBillChange()" ng-blur="totalBillBlur()" ng-model="totalBill" >
+
+                </label>
+
+                <label class="item item-input ">
+
+                    <span class="input-label"><i><img ng-src="img/tip-percent.png" style="display: inline-block;vertical-align: middle;"></i> Tip Percent  </span>
+
+                    <input type="text" do-decimal-number do-select-on-click ng-change="tipPercentChange()" ng-blur="tipPercentBlur()" ng-model="tipPercent" >
+                </label>
+                <label class="item item-input">
+
+                    <span class="input-label"><i><img ng-src="img/tip-amount.png" style="display: inline-block;vertical-align: middle;"></i> Tip Amount  </span>
+
+                    <input type="text" do-decimal-number do-select-on-click ng-change="tipAmountChange()" ng-blur="tipAmountBlur()" ng-model="tipAmount">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label"><i><img ng-src="img/total-final-amount.png" style="display: inline-block;vertical-align: middle;"></i> Total Amount </span>
+
+                    <input type="text" style="font-size:18px;color:orangered;" do-decimal-number do-select-on-click ng-change="totalFinalAmountChange()" ng-blur="totalFinalAmountBlur()" ng-model="totalFinalAmount" >
+
+                </label>
+
+                <ion-item class="item item-input">
+                    <input type="text" do-select-on-click placeholder="Person Name" ng-model="currentPerson.name">
+
+                    <button class="button icon-right ion-person-add button-positive" title="Add Person" ng-click="addPersonClick()">
+                        Add
+                    </button>
+
+                </ion-item>
+
+            </ion-list>
+            <ion-list>
+                <div class="item item-divider">
+                    <label>
+                        <span style="font-size:20px;color: dodgerblue;"><i><img style="padding-right:10px;display: inline-block;vertical-align: middle;" ng-src="img/total-persons.png"></i>   Total Persons  :   {{totalPersons}} </span>
+                    </label>
+                </div>
+
+                <ion-item class="item item-remove-animate  item-avatar item-icon-right" ng-repeat="person in totalPersonsArray" type="item-text-wrap">
+                    <img ng-src="{{person.face}}">
+                    <h2>{{person.name}}</h2>
+                    <p>{{person.amount | currency}} <span ng-show="person.extra>0"> (including {{person.extra  | currency}} extra+tips)</span></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <ion-option-button class="button-assertive" ng-click="removePersonClick($index)">
+                        <i><img ng-src="img/remove-person.png"></i>
+                    </ion-option-button>
+                    <ion-option-button class="button-balanced" ng-click="payExtra($index)">
+                        <i><img ng-src="img/extra.png"></i>
+                    </ion-option-button>
+                    <ion-option-button class="button-royal" ng-click="sendReminder($index)">
+                        <i><img ng-src="img/email.png"></i>
+                    </ion-option-button>
+                </ion-item>
+
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,59 @@
+﻿/* Empty. Add your own CSS if you like */
+.my-back-button {
+content: url('/img/add-person.png');
+width: 48px;
+}
+
+.tip-percent {
+content: url('/img/tip-percent.png');
+width: 30px;
+fill: red;
+}
+.tip-amount {
+content: url('/img/tip-amount.svg');
+width: 30px;
+}
+.total-bill {
+content: url('/img/total-bill.png');
+width: 30px;
+}
+.total-final-amount {
+content: url('/img/total-final-amount.png');
+width: 30px;
+}
+
+.extra {
+content: url('/img/extra.svg');
+width: 16px;
+}
+.email {
+content: url('/img/email.svg');
+width: 16px;
+}
+.remove-person {
+content: url('/img/remove-person.svg');
+width: 16px;
+}
+
+.total-persons {
+content: url('/img/total-persons.png');
+width: 24px;
+}
+
+
+.helpimg {
+    max-width:60%;
+   max-height:60%;
+   
+}
+
+#list ul {
+  margin-top: 30px;
+}
+#list ul li {
+  text-align: left;
+  list-style: disc;
+  margin: 10px 30px;
+}
+
+
